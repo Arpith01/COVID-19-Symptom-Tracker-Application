@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">COVID-19 Symptom Tracker</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="string_enter_name_hint">Enter your name</string>
+    <string name="string_button_next">Next</string>
+    <string name="signs_tab">Signs</string>
+    <string name="symptoms_tab">Symptoms</string>
+    <string name="signs_fragment_text">Signs fragment</string>
+    <string name="symptoms_fragment_text"> Symptoms fragment</string>
+    <string name="upload_signs_text">Upload Signs</string>
+    <string name="heart_rate_label_heading">Heart Rate</string>
+    <string name="respiratory_rate_label_heading">Respiratory Rate</string>
+    <string name="measure_heart_rate_text">Measure</string>
+    <string name="measure_respiratory_rate_text">Measure</string>
+    <string name="informationDialogOkButton">Ok</string>
+    <string name="nausea_text">Nausea</string>
+    <string name="headache_text">Headache</string>
+    <string name="diarrhea_text">Diarrhea</string>
+    <string name="soar_throat_text">Soar Throat</string>
+    <string name="fever_text">Fever</string>
+    <string name="muscle_ache_text">Muscle Ache</string>
+    <string name="loss_of_sot_text">Loss of Smell or Taste</string>
+    <string name="cough_text">Cough</string>
+    <string name="short_of_breath_text">Shortness of Breath</string>
+    <string name="feeling_tired_text">Feeling Tired</string>
+    <string name="symptoms_submit_button">Upload Symptoms</string>
+    <string name="button_start_text">Start</string>
+    <string name="cancel_breath_text">Cancel</string>
+    <string name="breath_info_text">Please lie down flat and place the phone on your chest. Press Start when you are ready and wait until the phone vibrates (45 seconds)</string>
+    <string name="heart_info_text">Please place your index finger covering the back camera. Press start when you are ready and wait until the timer goes out (45 seconds)</string>
+    <string name="new_record_button_text">New Record</string>
+    <string name="exit_app_button_text">Exit</string>
+    <string name="submit_button">Submit</string>
+
+</resources>
