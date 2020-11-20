@@ -37,7 +37,14 @@
     <string name="breath_info_text">Please lie down flat and place the phone on your chest. Press Start when you are ready and wait until the phone vibrates (45 seconds)</string>
     <string name="heart_info_text">Please place your index finger covering the back camera. Press start when you are ready and wait until the timer goes out (45 seconds)</string>
     <string name="new_record_button_text">New Record</string>
-    <string name="exit_app_button_text">Exit</string>
+    <string name="upload_to_server_button_text">Upload data to Server</string>
     <string name="submit_button">Submit</string>
+    <string name="sync_button_text">Sync</string>
+    <string name="record_symptoms_button_text">Record Symptoms</string>
+    <string name="trace_contact_button_text">Trace Contact</string>
+    <string name="string_enter_subject_name_hint">Enter subject name/ id</string>
+    <string name="select_date_button_text">Select Date</string>
+    <string name="find_contacts_button_text">Find Contacts</string>
+    <string name="home_button_text">Home</string>
 
 </resources>

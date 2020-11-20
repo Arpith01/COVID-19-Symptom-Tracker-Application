@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.location.Location;
 
 import androidx.annotation.Nullable;
 
@@ -25,7 +26,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table "+  TABLE_NAME+
-                "(timestamp BIGINT PRIMARY KEY, heart_rate INTEGER, respiratory_rate INTEGER, nausea_rating INTEGER," +
+                "(timestamp BIGINT PRIMARY KEY, loc_lat BIGINT, loc_long BIGINT, heart_rate INTEGER, respiratory_rate INTEGER, nausea_rating INTEGER," +
                 " headache_rating INTEGER, diarrhea_rating INTEGER," + "soar_throat_rating INTEGER, " +
                 "fever_rating INTEGER, muscle_ache_rating INTEGER, loss_of_smell_or_taste_rating INTEGER, " +
                 "cough_rating INTEGER, shortness_of_breath_rating INTEGER, feeling_tired_rating INTEGER)");
@@ -53,10 +54,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean insertOrUpdateData(long timestamp, int heartRate, int respiratoryRate, HashMap<String, Integer> symptoms){
+    public boolean insertOrUpdateData(long timestamp, int heartRate, int respiratoryRate, HashMap<String, Integer> symptoms, Location userLocation){
         SQLiteDatabase database = this.getWritableDatabase();
+
         ContentValues contentValues = new ContentValues();
         contentValues.put("timestamp", timestamp);
+
 
         if(heartRate!=0)
             contentValues.put("heart_rate", heartRate);
@@ -67,6 +70,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 contentValues.put(entry.getKey(),entry.getValue());
             }
         }
+        if(userLocation!=null){
+            double latitude = userLocation.getLatitude();
+            double longitude = userLocation.getLongitude();
+
+            long long_latitude = (long) (latitude * 10e6);
+            long long_longitude = (long) (longitude * 10e6);
+            contentValues.put("loc_lat", long_latitude);
+            contentValues.put("loc_long", long_longitude);
+        }
+
 
         if(rowExists(timestamp)){
             database.update(TABLE_NAME, contentValues, "timestamp=?", new String[]{String.valueOf(timestamp)});
@@ -125,5 +138,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         int numRows = (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME);
         return numRows;
+    }
+
+    public void closeDB(){
+        this.getReadableDatabase().close();
     }
 }

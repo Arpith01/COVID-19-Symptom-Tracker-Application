@@ -22,10 +22,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        nameEditText = findViewById(R.id.name_edit_text);
         sharedPreferences = getSharedPreferences(Constants.PREFERENCES, Context.MODE_PRIVATE);
         userName = sharedPreferences.getString(Constants.USER_NAME, "");
+
+        if(!userName.isEmpty()){
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        setContentView(R.layout.activity_main);
+        nameEditText = findViewById(R.id.name_edit_text);
+
         userName = userName.replace('_', ' ');
         nameEditText.setText(userName);
     }
@@ -43,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d(logTagName, "TIMESTAMP: "+ timestamp);
             final DataBaseHelper dataBaseHelper = new DataBaseHelper(this, userName + ".db");
             Log.d(logTagName, dataBaseHelper.getData());
-            Intent intent = new Intent(this, SignsAndSymptomsActivity.class);
+            Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
             finish();
         } else {
